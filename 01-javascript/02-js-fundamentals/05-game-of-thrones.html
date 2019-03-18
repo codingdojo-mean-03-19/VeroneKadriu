@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Game of Thrones</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        img{
+            margin: 5px;
+            width: 300px;
+            height: 200px;
+        }
+    </style>
+    <script>
+        
+        $(document).ready(function () {
+            
+            
+            
+            $('#starkimg').click(function(){$.get("https://anapioficeandfire.com/api/houses/362", displayInfo)
+                var sname;
+                var swords;
+                var stitles;
+
+                function displayInfo(data) {
+                sname = data.name;
+                swords = data.words;
+                stitles = data.titles;
+
+                $('#starkimg').after(
+                
+                "<div class='info'>"+
+                    "<h3>Name:"+sname+ "</h3>"+
+                    "<h3>Words:"+ swords+"</h3>"+
+                    "<h3>Titles:"+ stitles+"</h3>"+
+                "</div>"
+
+                
+                )};
+                
+                
+            });
+
+            $('#taragaryenimg').click(function(){$.get("https://anapioficeandfire.com/api/houses/378", displayInfo)
+                var tname;
+                var twords;
+                var ttitles;
+
+                function displayInfo(data) {
+                tname = data.name;
+                twords = data.words;
+                ttitles = data.titles;
+
+                $('#taragaryenimg').after(
+                
+                "<div class='info'>"+
+                    "<h3>Name:"+tname+ "</h3>"+
+                    "<h3>Words:"+ twords+"</h3>"+
+                    "<h3>Titles:"+ ttitles+"</h3>"+
+                "</div>"
+
+                
+                )};
+                
+                
+            });
+
+            $('#lannisterimg').click(function(){$.get("https://anapioficeandfire.com/api/houses/229", displayInfo)
+                var lname;
+                var lwords;
+                var ltitles;
+
+                function displayInfo(data) {
+                lname = data.name;
+                lwords = data.words;
+                ltitles = data.titles;
+
+                
+                $('#lannisterimg').after(
+                
+                "<div class='info'>"+
+                    "<h3>Name:"+lname+ "</h3>"+
+                    "<h3>Words:"+ lwords+"</h3>"+
+                    "<h3>Titles:"+ ltitles+"</h3>"+
+                "</div>"
+
+                
+                )};
+            });
+
+            $('#baratheonimg').click(function(){$.get("https://anapioficeandfire.com/api/houses/17", displayInfo)
+                var bname;
+                var bwords;
+                var btitles;
+
+                function displayInfo(data) {
+                bname = data.name;
+                bwords = data.words;
+                btitles = data.titles;
+                
+                $('#baratheonimg').after(
+                
+                "<div class='info'>"+
+                    "<h3>Name:"+bname+ "</h3>"+
+                    "<h3>Words:"+ bwords+"</h3>"+
+                    "<h3>Titles:"+ btitles+"</h3>"+
+                "</div>"
+
+                
+                )};
+            });
+        
+            
+        
+        });
+    </script>
+</head>
+<body>
+    <div class="page-header">
+        <div class="text-center">
+            <h1>Game of Thrones</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <img src="assets/img/got/stark.jpg" alt="stark_HOUSE" id="starkimg">
+            </div>
+            <div class="col-md-3">
+                <img src="assets/img/got/targaryen.jpg" alt="taragaryen_HOUSE" id="taragaryenimg">
+            </div>
+            <div class="col-md-3">
+                <img src="assets/img/got/lannister.jpg" alt="lannister_HOUSE" id="lannisterimg">
+            </div>
+            <div class="col-md-3">
+                <img src="assets/img/got/baratheon.png" alt="baratheon_HOUSE" id="baratheonimg">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

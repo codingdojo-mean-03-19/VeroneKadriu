@@ -8,7 +8,13 @@
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script></script>
+    <script>
+        $(document).ready(function () {
+            $('#computers').hide();
+            $('#q1').click(function(){$('#computers').show();         
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="page-header">
@@ -16,15 +22,31 @@
             <h1>Trivia Game!</h1>
         </div>
     </div>
-    <div class="category">
-        <h3>Mathematics</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>Computers</h3>
+                <button class="btn btn-danger" id="q1">Show questions</button>
+                <div class="form-group" id="computers">
+                    <div class="form-check">
+                        <label>{question.question}</label>
+                        <br>
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            {question.option}
+                        </label>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-danger">Computers</button>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-danger">Art</button>
+            </div>
+        </div>
     </div>
-    <div class="category">
-        <h3>Computers</h3>
-    </div>
-    <div class="category">
-        <h3>Art</h3>
-    </div>
-    
 </body>
 </html>
