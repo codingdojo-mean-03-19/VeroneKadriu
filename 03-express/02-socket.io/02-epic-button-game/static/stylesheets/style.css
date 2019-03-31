@@ -1,0 +1,18 @@
+body{
+    width: 900px;
+    margin: 0px auto;
+}
+
+div{
+    margin: 20px;
+    margin-left: 250px;
+    border-style: solid;
+    border-width: 5px;
+    padding:20px;
+    padding-left: 50px;
+    width: 300px;
+}
+
+h1{
+    margin-top: 0px;
+}

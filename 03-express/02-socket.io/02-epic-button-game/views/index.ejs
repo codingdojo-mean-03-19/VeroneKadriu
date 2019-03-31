@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Counter</title>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js" charset="utf-8"></script>
+    <script type ="text/javascript">
+        
+        	
+		$(document).ready(function(){
+		var socket = io.connect();
+		socket.on('numberUpdated', function(number){
+			$('#number').text(number);
+		});
+		$('#epic').click(function(){
+			socket.emit('buttonClicked');
+		});
+		$('#reset').click(function(){
+			socket.emit('reset');
+		});
+
+	});
+	
+    </script>
+</head>
+<body>
+
+    
+
+    <div>
+        
+        <h1>The Button has been pushed  <span id="number">0</span> times</h1>
+		<p>Push the button to update the count!</p>
+        <button class="btn btn-primary" id="epic">Push the Epic Button</button>
+        <button class="btn btn-warning" id="reset">Reset</button>
+    </div>
+    
+</body>
+</html>
