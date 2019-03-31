@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>SWAPI</title>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>     
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ 
+    </head>
+    <body>
+        <div class="container">
+    
+                <div class="col">
+                        <section id="main">
+                            <h1>Star wars</h1>
+                            <p>What would you like to know more about?</p>
+                         
+                                <button id="peopleBtn" class="btn btn-light">People</button>
+                            
+                                <button id="planetBtn" class="btn btn-light">Planets</button>
+                            
+                        </section>
+                        <div id="api" class="mt-2">
+                            <ul id="space"></ul>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col d-flex justify-content-around">
+                        <button id="prev" class='btn btn-light' hidden>Previous 10</button>
+                        <button id="all" class='btn btn-light' hidden>Get all</button>
+                        <button id="next" class='btn btn-light' hidden>Next 10</button>
+                    </div>
+                </div>
+            </DIV>
+    <script>
+
+$(document).ready(function(){
+    const app = document.getElementById('main');
+    const logo = document.createElement('img');
+    logo.src = 'images/star-wars.png';
+    logo.setAttribute('class', 'title');
+    app.insertBefore(logo, app.firstChild);
+
+    let search;
+    $('#peopleBtn').click(() => {
+        search = '/people/0';
+        $('#space').empty();
+        // let's make the request to our OWN server!
+        $.ajax({
+            url: search,
+            dataType: 'json',
+            success: (data) => {
+                let people = data.results;
+                for (d of people){
+                    $('#space').append(`<li>${d.name}</li>`);
+                }
+                
+                display(data);
+            }
+        });
+        return false;
+    });
+    $('#planetBtn').click(() => {
+        search = '/planet/0';
+        $('#space').empty();
+        
+        $.ajax({
+            url: search,
+            dataType: 'json',
+            success: (data) => {
+                let planets = data.results;
+                for (p of planets){
+                    $('#space').append(`<li>${p.name}</li>`);
+                }
+              
+                display(data);
+            }
+        });
+        return false;
+    });
+
+    $('#next').click(() => {
+        
+        $.get('/next', (data) => { 
+            display(data); 
+        }, 'json');
+    });
+
+    $('#prev').click(() => {
+        
+        $.get('/prev', (data) => {
+            display(data);
+        }, 'json');
+    });
+
+    $('#all').click(() => {
+        
+        $.get('/all', (data) => {
+                display(data);
+            }, 'json');
+    });
+
+  
+
+    function display(info){
+        $('#all').removeAttr('hidden');
+
+       
+        $('#next').removeAttr('hidden');
+       
+            
+        
+
+        $('#prev').removeAttr('hidden');
+       
+
+        let build = '';
+        for(let i = 0; i < info.results.length; i++){
+            build += `<li> ${info.results[i].name} </li>`;
+        }
+
+        $('#all').click(function() {
+                add();
+            });
+    }
+
+   
+
+   
+    function add(){
+        $('#loading').removeAttr('hidden');
+        $.get('/next', (data) => {
+            let build = '';
+            for(let i = 0; i < data.results.length; i++){
+                build += `<li> ${data.results[i].name} </li>`
+            }
+            
+            $('#content').append(build);
+            
+        }, 'json');
+    }
+});
+    </script>
+</body>
+</html>
+    
+   
