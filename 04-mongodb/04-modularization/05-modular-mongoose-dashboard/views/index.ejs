@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mongoose Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    
+        <h1>Panda Page!</h1>
+        <a href="/new" class="btn btn-primary">Create new panda</a>
+        <hr>
+        <% for (const panda of pandas) { %>
+            <p>Panda name: <a href="/<%= panda._id %>/"><%= panda.name %></a></p>
+            <p><a href="/<%= panda._id %>/edit/" class="btn btn-primary">Edit panda</a></p>
+            <form action="/<%= panda._id %>/delete/" method='post'>
+                <input type="submit" value="Delete" class="btn btn-primary">
+            </form> 
+            <hr>
+        <% } %>
+   
+</body>
+</html>
