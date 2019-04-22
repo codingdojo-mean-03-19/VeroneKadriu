@@ -4,6 +4,6 @@ const router = require('express').Router();
 module.exports = router
     .get('/', taskController.index)
     .get('/:id', taskController.show)
-    .post('/', taskController.create)
+    .post('/new/', taskController.create)
     .put('/:id', taskController.update)
-    .delete('/:id', taskController.destroy);
+    .delete('/delete/:id', taskController.destroy);
