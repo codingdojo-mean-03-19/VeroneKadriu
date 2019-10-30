@@ -1,9 +1,9 @@
 const express = require('express'),
-    bodyParser = require('body-parser'),
-    mongoose = require('mongoose'),
-    path = require('path'),
-    port = 8000,
-    app = express();
+const bodyParser = require('body-parser'),
+const mongoose = require('mongoose'),
+const path = require('path'),
+port = 8000,
+app = express();
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,16 +38,17 @@ app.get('/quotes', function(req, res) {
 app.post('/quotes', function(req, res) {
   Quote.create(function(err) {
     var quote = new Quote({ name: req.body.name, quote: req.body.quote });
-  
+
     if (err) {
       console.log('error!', err);
-      
+
+
       res.redirect('/');
     } else {
       console.log('successfully');
       res.redirect('/quotes');
     }
-  
+
   });
 });
 
